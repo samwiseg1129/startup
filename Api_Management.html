@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Track - Key Generation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #4CAF50;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            background-color: #45a049;
+        }
+
+        /* Body Content */
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .generate-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .generate-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/api-management">API Management</a>
+        <a href="/profile">My Profile</a>
+    </div>
+
+    <!-- Body Content -->
+    <div class="container">
+        <img src="placeholder.jpg" alt="Product Image">
+        <br>
+        <button class="generate-btn" onclick="generateKey()">Generate Key</button>
+    </div>
+
+    <script>
+        function generateKey() {
+            alert("API Key Generated!");
+            // You can replace this alert with actual key generation logic.
+        }
+    </script>
+
+</body>
+</html>
