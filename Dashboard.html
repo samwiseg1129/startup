@@ -4,107 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Track - Image Viewer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        /* Navigation Bar */
-        .navbar {
-            background-color: #4CAF50;
-            overflow: hidden;
-            padding: 15px;
-        }
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        .navbar a:hover {
-            background-color: #45a049;
-        }
-        .container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 40px;
-        }
-        .image-container {
-            text-align: center;
-        }
-        img {
-            width: 300px;
-            height: auto;
-            border: 2px solid #ccc;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-        .zoom-btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 5px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        .zoom-btn:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
 <body>
 
     <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="/dashboard">Dashboard</a>
-        <a href="/api-management">API Management</a>
-        <a href="/profile">My Profile</a>
+        <a href="/startup/Dashboard.html">Dashboard</a>
+        <a href="/startup/Api_Management.html">API Management</a>
+        <a href="/startup/myprofile.html">My Profile</a>
     </div>
 
     <!-- Body Content -->
     <div class="container">
         <!-- Image 1 -->
         <div class="image-container">
-            <img id="image1" src="placeholder1.jpg" alt="Image 1 Placeholder">
+            <img id="image1" src="producttrack.png" alt="analytics dashboard here">
             <br>
-            <button class="zoom-btn" onclick="zoomIn('image1')">Zoom In</button>
-            <button class="zoom-btn" onclick="zoomOut('image1')">Zoom Out</button>
+            <button class="zoom-btn">Zoom In</button>
+            <button class="zoom-btn">Zoom Out</button>
+            <p>
+                This page will be the main analysis page where infographics display their users data and workflows. 
+            </p>
         </div>
 
         <!-- Image 2 -->
         <div class="image-container">
             <img id="image2" src="placeholder2.jpg" alt="Image 2 Placeholder">
             <br>
-            <button class="zoom-btn" onclick="zoomIn('image2')">Zoom In</button>
-            <button class="zoom-btn" onclick="zoomOut('image2')">Zoom Out</button>
         </div>
     </div>
-
-    <script>
-        // Zoom in function
-        function zoomIn(imageId) {
-            let image = document.getElementById(imageId);
-            let currentWidth = image.clientWidth;
-            image.style.width = (currentWidth + 20) + 'px';
-        }
-
-        // Zoom out function
-        function zoomOut(imageId) {
-            let image = document.getElementById(imageId);
-            let currentWidth = image.clientWidth;
-            if (currentWidth > 100) { // Ensure image doesn't shrink too small
-                image.style.width = (currentWidth - 20) + 'px';
-            }
-        }
-    </script>
 
 </body>
 </html>
