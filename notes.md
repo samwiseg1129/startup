@@ -3,3 +3,5 @@
 
 
 ### today i have learned a lot about the basic structure of html. I have been working to learn about links and buttons etc. looking forward to the build
+
+### today i learned how bad it is if i get behind on my coding projects hahah
