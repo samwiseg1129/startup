@@ -3,7 +3,7 @@ cs260 startup project
 
 ## Project requirements
 ### Elevator pitch - Product Track
-Product Track is your one stop shop for product management analytics. embed analytics to various parts of your website to track time spent on a page, number of clicks of a button, percentage of user who complete product workflow, etc. Easily embbed these analytics using api key generator button and then adding it to your website. track your users and their many movements from an analytics dashboard here on Product track!
+Product Track is your one stop shop for product management analytics. embed analytics to various parts of your website to track time spent on a page, number of clicks of a button, percentage of user who complete product workflow, etc. Easily embed these analytics using api key generator button and then adding it to your website. track your users and their many movements from an analytics dashboard here on Product track!
 
 ### Key Features
 Key features include:
