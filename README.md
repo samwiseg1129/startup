@@ -24,3 +24,14 @@ Key features include:
 
 ### Website design
 ![product track dashboard] (/startup/producttrack.png)
+
+
+
+
+
+### Modified and added 
+- built HTML frameworks for each webpage
+- restructured web app
+- added placeholder (images) for all of the technologies
+- added links between pages
+- built login and registration pages
