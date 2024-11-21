@@ -29,9 +29,12 @@ Key features include:
 
 
 
-### Modified and added 
+## Modified and added 
+### HTML STARTUP NOTES:
 - built HTML frameworks for each webpage
 - restructured web app
 - added placeholder (images) for all of the technologies
 - added links between pages
 - built login and registration pages
+
+### CSS STARTUP NOTES:
