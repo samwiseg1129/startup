@@ -36,5 +36,9 @@ Key features include:
 - added placeholder (images) for all of the technologies
 - added links between pages
 - built login and registration pages
+- header and head are different tags
+    - header and footer go inside body
 
 ### CSS STARTUP NOTES:
+- you link bootstrap in the header section and js bootstrap in body using <script> 
+- 

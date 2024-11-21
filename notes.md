@@ -6,7 +6,7 @@
 
 ### today i learned how bad it is if i get behind on my coding projects hahah
 
-### Remember to use the same general html page structure across new pages to ensure congruencey
+### Remember to use the same general html page structure across new pages to ensure congruency
 
 ### IN CSS STYLING
 #### there are lots of different component types to implement such as accordion, button, card, etc
