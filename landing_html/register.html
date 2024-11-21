@@ -49,49 +49,51 @@
         </header>
     
         <!-- Main Body of Content-->
-        <main>
-            <div>
-                <h1>Registration Form</h1>
-                <form action="formSubmit.html" method="post">
-                    <ul>
-                        <li>
-                            <label for="Name">Name: </label>
-                            <input type="name" id="name" name="varText"/>
-                        </li>
-                        <li>
-                            <label for="username">Username: </label>
-                            <input type="username" id="username" name="varText"/>
-                        </li>
-                        <li>
-                            <label for="select">Role: </label>
-                            <select id="select" name="varSelect">
-                                <option>Product Manager</option>
-                                <option>SWE</option>
-                                <option>Student</option>
-                            </select>
-                        </li>
-                        <li>
-                            <label for="select">Reason for use: </label>
-                            <select id="select" name="varSelect">
-                                <option>Work</option>
-                                <option>Personal Project</option>
-                                <option>School</option>
-                            </select>
-                        </li>
-                        <li>
-                            <label for="username">Username: </label>
-                            <input type="username" id="username" name="varText" required pattern="[Aa].*" />
-                        </li>
-                        <li>
-                            <label for="password">Password: </label>
-                            <input type="password" id="password" name="varPassword" required pattern="[Aa].*" />
-                        </li>
-                    </ul>
-                    <button href="../html/dashboard.html">Submit</button>
-                    <div>
-                        <a href="login.html">Already have an account</a>
+        <main class="container my-5">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h1 class="card-title text-center mb-4">Registration Form</h1>
+                            <form action="formSubmit.html" method="post">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name:</label>
+                                    <input type="text" class="form-control" id="name" name="varText">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">Role:</label>
+                                    <select class="form-select" id="role" name="varSelect">
+                                        <option>Product Manager</option>
+                                        <option>SWE</option>
+                                        <option>Student</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reason" class="form-label">Reason for use:</label>
+                                    <select class="form-select" id="reason" name="varSelect">
+                                        <option>Work</option>
+                                        <option>Personal Project</option>
+                                        <option>School</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="username2" class="form-label">Username:</label>
+                                    <input type="text" class="form-control" id="username2" name="varText" required pattern="[Aa].*">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password:</label>
+                                    <input type="password" class="form-control" id="password" name="varPassword" required pattern="[Aa].*">
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="login.html" class="btn btn-link">Already have an account</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         </main>
         <!-- Footer -->

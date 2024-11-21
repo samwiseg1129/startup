@@ -46,26 +46,32 @@
                 </div>
             </nav>
         </header>
-        <main>
-            <div>
-                <h1>Login</h1>
-                <form>
-                    <ul>
-                        <li>
-                            <label for="text">Username: </label>
-                            <input type="text" id="text" name="varText"/>
-                        </li>
-                        <li>
-                            <label for="password">Password: </label>
-                            <input type="password" id="password" name="varPassword" />
-                        </li>
-                    </ul>
-                    <a href="../app_html/dashboard.html">Submit</a>
-                    <a href="../app_html/dashboard.html">BYPASS LOGIN</a>
-                    <div>
-                        <a href="register.html">Register</a>
+        <main class="container my-5">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h1 class="card-title text-center mb-4">Login</h1>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="text" class="form-label">Username:</label>
+                                    <input type="text" class="form-control" id="text" name="varText" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password:</label>
+                                    <input type="password" class="form-control" id="password" name="varPassword" required>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <a href="../app_html/dashboard.html" class="btn btn-primary">Submit</a>
+                                    <a href="../app_html/dashboard.html" class="btn btn-secondary">BYPASS LOGIN</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="register.html" class="btn btn-link">Register</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         </main>
         <!-- Footer -->
