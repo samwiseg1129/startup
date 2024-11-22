@@ -41,4 +41,9 @@ Key features include:
 
 ### CSS STARTUP NOTES:
 - you link bootstrap in the header section and js bootstrap in body using <script> 
-- 
+- footer is easy copy and paste. 
+- learned about different bootstrap button options
+- Cards look better on smaller items 
+- Building so many divs makes these apps so deep on nesting. Is there a better/ easier way to do it?
+- learned how to use the grid system for bootstrap (remember it uses 12 as its column default)
+- Going to need to make more adjustments to UI once 
