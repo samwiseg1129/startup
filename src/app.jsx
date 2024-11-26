@@ -62,6 +62,7 @@ function App() {
             <Route path='/api_management' element={<Api_Management />} />
             <Route path='/query' element={<Query />} />
             <Route path='/my_profile' element={<My_Profile />} />
+            <Route path='/register' element={<Register />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
 

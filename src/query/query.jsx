@@ -3,22 +3,22 @@ import React from 'react';
 export function Query() {
   return (
     <main className='container-fluid bg-light text-center container my-5'>
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <h1 class="card-title text-center mb-4">User Data Query</h1>
-                <p class="lead text-center mb-4">
+        <div className="row">
+            <div className="col-lg-10 mx-auto">
+                <h1 className="card-title text-center mb-4">User Data Query</h1>
+                <p className="lead text-center mb-4">
                     This is where the websocket tech will be used for a database query tool that can be configured to put new statistics on the dashboard
                 </p>
-                <div class="text-center">
+                <div className="text-center">
                     <img src="../pictures/sql_plchldr.webp" alt="link generator here" class="img-fluid rounded"></img>
                 </div>
-                <div class="mt-4">
-                    <h2 class="h4">Query Tool</h2>
-                    <div class="mb-3">
+                <div className="mt-4">
+                    <h2 className="h4">Query Tool</h2>
+                    <div className="mb-3">
                         <textarea class="form-control" rows="5" placeholder="Enter your SQL query here..."></textarea>
                     </div>
-                    <div class="d-grid">
-                        <button class="btn btn-primary" type="button">Run Query</button>
+                    <div className="d-grid">
+                        <button className="btn btn-primary" type="button">Run Query</button>
                     </div>
                 </div>
             </div>

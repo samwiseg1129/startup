@@ -1,9 +1,54 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export function Register() {
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>login displayed here</div>
+    <main className='container-fluid bg-light text-center container my-5'>
+        <div className="row">
+            <div className="col-md-8 mx-auto">
+                <div className="card shadow-sm">
+                    <div className="card-body">
+                        <h1 className="card-title text-center mb-4">Registration Form</h1>
+                        <form action="formSubmit.html" method="post">
+                            <div className="mb-3">
+                                <label for="name" className="form-label">Name:</label>
+                                <input type="text" className="form-control" id="name" name="varText"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="role" className="form-label">Role:</label>
+                                <select className="form-select" id="role" name="varSelect">
+                                    <option>Product Manager</option>
+                                    <option>SWE</option>
+                                    <option>Student</option>
+                                </select>
+                            </div>
+                            <div className="mb-3">
+                                <label for="reason" class="form-label">Reason for use:</label>
+                                <select className="form-select" id="reason" name="varSelect">
+                                    <option>Work</option>
+                                    <option>Personal Project</option>
+                                    <option>School</option>
+                                </select>
+                            </div>
+                            <div className="mb-3">
+                                <label for="username2" className="form-label">Username:</label>
+                                <input type="text" className="form-control" id="username2" name="varText" required pattern="[Aa].*"></input>
+                            </div>    
+                            <div className="mb-3">
+                                <label for="password" className="form-label">Password:</label>
+                                <input type="password" className="form-control" id="password" name="varPassword" required pattern="[Aa].*"></input>
+                            </div>
+                            <div className="d-grid gap-2">
+                                <button type="submit" className="btn btn-primary">Submit</button>
+                            </div>
+                            <div className="text-center mt-3">
+                                <Link to="/login" className="btn btn-link">Already have an account</Link>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
   );
 }
