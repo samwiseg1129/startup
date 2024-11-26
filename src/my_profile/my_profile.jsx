@@ -1,10 +1,20 @@
-<!DOCTYPE html>
+import React from 'react';
+
+export function My_Profile() {
+  return (
+    <main className='container-fluid bg-secondary text-center'>
+      <div>login displayed here</div>
+    </main>
+  );
+}
+{/*
+    <!DOCTYPE html>
 <html lang="en">
-    <!-- Header-->
+    <!-- Header -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Product Track - User Data Query Tool</title>
+        <title>Product Track - My Profile</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <style>
             body {
@@ -18,7 +28,7 @@
         </style>
     </head>
 
-    <!-- Body Content -->
+
     <body>
         <!-- Header / Nav bar-->
         <header>
@@ -48,28 +58,34 @@
                 </div>
             </nav>
         </header>
+        <!-- Body / Content-->
         <main class="container my-5">
             <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <h1 class="card-title text-center mb-4">User Data Query</h1>
-                    <p class="lead text-center mb-4">
-                        This is where the websocket tech will be used for a database query tool that can be configured to put new statistics on the dashboard
-                    </p>
-                    <div class="text-center">
-                        <img src="../pictures/sql_plchldr.webp" alt="link generator here" class="img-fluid rounded">
-                    </div>
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="card-title text-center mb-4">Your Profile</h1>
                     <div class="mt-4">
-                        <h2 class="h4">Query Tool</h2>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Enter your SQL query here..."></textarea>
-                        </div>
-                        <div class="d-grid">
-                            <button class="btn btn-primary" type="button">Run Query</button>
-                        </div>
+                        <h2 class="h4">Account Details</h2>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Username:</strong> <span id="username">JohnDoe123</span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Email:</strong> <span id="email">johndoe@example.com</span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Account Type:</strong> <span id="accountType">Premium</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <button class="btn btn-primary" type="button">Edit Profile</button>
+                        <button class="btn btn-outline-danger" type="button">Change Password</button>
+                        <button class="btn btn-outline-primary" type="button">Log Out</button>
                     </div>
                 </div>
             </div>
         </main>
+
         <!-- Footer -->
         <footer class="bg-dark text-light py-4 mt-5">
             <div class="container">
@@ -89,4 +105,4 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
-  
+ */}

@@ -1,52 +1,75 @@
 import React from 'react';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Api_Management } from './api_management/api_management';
+import { Dashboard } from './dashboard/dashboard';
+import { My_Profile } from './my_profile/my_profile';
+import { Query } from './query/query';
+import { Register } from './register/register';
+import { How_It_Works } from './how_it_works/how_it_works';
+import { Landing } from './landing/landing';
+import { Login } from './login/login';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Nav } from 'react-bootstrap';
 
-export default function App() {
+function App() {
     return (
-        <div class="bg-light">
+        <BrowserRouter>    
+        <div className="bg-light">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-                <div class="container">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="../pictures/P.png" alt="Product Track Logo" width="50" height="50"></img>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+            <Nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <div className="container">
+                    <NavLink className="navbar-brand" to="landing">
+                        <img src="./public/P.png" alt="Product Track Logo" width="50" height="50"></img>
+                    </NavLink>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.html">Home</a>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav ms-auto">
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="landing">Home</NavLink>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/landing_html/how_it_works.html">How it works</a>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="how_it_works">How it works</NavLink>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/landing_html/login.html">Login</a>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="login">Login</NavLink>
                             </li>
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </Nav>
         </header>
 
-        <main> App components go here</main>
+        <Routes>
+            <Route path='/' element={<Landing />} exact />
+            <Route path='/landing' element={<Landing />} />
+            <Route path='/how_it_works' element={<How_It_Works />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='*' element={<NotFound />} />
+        </Routes>
 
-        <footer class="bg-dark text-light py-4 mt-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start">
+        <footer className="bg-dark text-light py-4 mt-5">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6 text-center text-md-start">
                         <p>&copy; 2024 Product Track. All rights reserved.</p>
                     </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <a href="index.html" class="text-light me-3">Home</a>
-                        <a href="/landing_html/how_it_works.html" class="text-light me-3">How it works</a>
-                        <a href="/landing_html/login.html" class="text-light">Login</a>
+                    <div className="col-md-6 text-center text-md-end">
+                        <NavLink to="landing" className="text-light me-3">Home</NavLink>
+                        <NavLink to="how_it_works" className="text-light me-3">How it works</NavLink>
+                        <NavLink to="login" className="text-light">Login</NavLink>
                     </div>
                 </div>
             </div>
         </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         </div> 
+        </BrowserRouter>
     );
 }
+
+function NotFound() {
+    return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+  }
+
+export default App;
