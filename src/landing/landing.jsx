@@ -1,9 +1,29 @@
 import React from 'react';
+import { Link }  from "react-router-dom"
+import { Login } from "./../login/login";
 
 export function Landing() {
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>Landing</div>
+    <main className=' bg-light container-fluid bg-secondary text-center'>
+        <main className="container my-5">
+            <div className="row">
+                <div className="col-lg-8 mx-auto">
+                    <h1 className="text-center mb-4">Welcome to Product Track</h1>
+                    <p className="lead text-center mb-4">
+                        Product Track is your one-stop shop for product management analytics. 
+                        Embed analytics on your website to track user interactions like time spent on a page, 
+                        button clicks, workflow completion rates, and much more. 
+                        Generate API keys easily and monitor your data in real-time on the analytics dashboard.
+                    </p>
+                    <div className="text-center mb-4">
+                        <Link to="https://github.com/samwiseg1129/startup" className="btn btn-outline-primary">Sam's GitHub Repository</Link>
+                    </div>
+                    <div className="text-center">
+                        <Link to="/login" className="btn btn-primary btn-lg">Login to Get Started</Link>
+                    </div>
+                </div>
+            </div>
+        </main>
     </main>
   );
 }

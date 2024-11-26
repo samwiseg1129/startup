@@ -35,6 +35,18 @@ function App() {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="login">Login</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="dashboard">Dashboard</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="api_management">Api Management</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="query">Query</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="my_profile">My Profile</NavLink>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -46,6 +58,10 @@ function App() {
             <Route path='/landing' element={<Landing />} />
             <Route path='/how_it_works' element={<How_It_Works />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/api_management' element={<Api_Management />} />
+            <Route path='/query' element={<Query />} />
+            <Route path='/my_profile' element={<My_Profile />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
 

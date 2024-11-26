@@ -2,8 +2,31 @@ import React from 'react';
 
 export function My_Profile() {
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>login displayed here</div>
+    <main className='container-fluid bg-light text-center container my-5'>
+        <div className="row">
+            <div className="col-lg-8 mx-auto">
+                <h1 className="card-title text-center mb-4">Your Profile</h1>
+                <div className="mt-4">
+                    <h2 className="h4">Account Details</h2>
+                    <ul className="list-group">
+                        <li className="list-group-item">
+                            <strong>Username:</strong> <span id="username">JohnDoe123</span>
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Email:</strong> <span id="email">johndoe@example.com</span>
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Account Type:</strong> <span id="accountType">Premium</span>
+                        </li>
+                    </ul>
+                </div>
+                <div className="d-grid gap-2 mt-4">
+                    <button className="btn btn-primary" type="button">Edit Profile</button>
+                    <button className="btn btn-outline-danger" type="button">Change Password</button>
+                    <button className="btn btn-outline-primary" type="button">Log Out</button>
+                </div>
+            </div>
+        </div>
     </main>
   );
 }

@@ -1,9 +1,53 @@
 import React from 'react';
 
+
 export function Dashboard() {
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>login displayed here</div>
+    <main className='container-fluid bg-light text-center'>
+        <div className="row">
+            <div className="col-lg-10 mx-auto">
+                
+                <h1 className="card-title text-center mb-4">Your Dashboard</h1>
+                
+                <p className="lead text-center mb-4">
+                    This page will be the main analysis page where info graphics display their users data and workflows.
+                </p>
+                
+                <div className="text-center">
+                    <img src="./public/producttrack.png" alt="potential dashboard design" className="img-fluid rounded"></img>
+                </div>
+                
+                <div className="mt-4">
+                    <h2 className="h4">Key Metrics</h2>
+                    <div className="row">
+                        <div className="col-md-3 mb-3">
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">Active Users</h5>
+                                    <p className="card-text display-4">1,234</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-5 mb-3">
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">Completed Workflows</h5>
+                                    <p className="card-text display-4">5,678</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-4 mb-3">
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">Avg. Time on Page</h5>
+                                    <p className="card-text display-4">2:45</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
   );
 }

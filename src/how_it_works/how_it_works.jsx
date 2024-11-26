@@ -2,8 +2,21 @@ import React from 'react';
 
 export function How_It_Works() {
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>login displayed here</div>
+    <main className='container-fluid bg-light text-center container my-5'>
+        <div className="row">
+            <div className="col-lg-8 mx-auto">
+                <h1 className="text-center mb-4">How it works</h1>
+                <ol className="list-group list-group-numbered mb-4">
+                    <li className="list-group-item">Generate your project key</li>
+                    <li className="list-group-item">Copy endpoints into your codebase</li>
+                    <li className="list-group-item">Build out your dashboard to track users the way that works best for you (we do have pregenerated and recommended methods)</li>
+                </ol>
+                <div className="alert alert-info">
+                    <h5 className="alert-heading">Documentation</h5>
+                    <p className="mb-0">--- insert documentation here ---</p>
+                </div>
+            </div>
+        </div>
     </main>
   );
 }

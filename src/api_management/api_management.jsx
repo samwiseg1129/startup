@@ -1,9 +1,35 @@
 import React from 'react';
 
+
 export function Api_Management() {
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>login displayed here</div>
+    <main className='container-fluid bg-secondary text-center container my-5'>
+        <div className="row">
+            <div className="col-lg-8 mx-auto">
+                <h1 className="text-center mb-4">API Management</h1>
+                <p className="lead text-center">
+                    This page will show the history of generated keys
+                </p>
+                <div className="alert alert-info" role="alert">
+                    <h4 className="alert-heading">Placeholder Notice</h4>
+                    <p className="mb-0">THIS IS A PLACE HOLDER FOR WHERE DATABASE DATA WILL BE DISPLAYED (INDIVIDUAL API KEYS AND THEIR USES)</p>
+                </div>
+                
+                <div className="text-center my-4">
+                    <img src="./public/apigen_plchldr.png" alt="link generator here" className="img-fluid"></img>
+                </div>
+                
+                <p className="mb-4 text-center">It will also allow you to create new keys for new projects</p>
+                
+                <div className="alert alert-warning" role="alert">
+                    <h4 className="alert-heading">Placeholder Notice</h4>
+                    <p className="mb-0">THIS IS A PLACE HOLDER FOR 3RD PARTY API CALLS FOR URL SHORTENER</p>
+                </div>
+                <div className="d-grid gap-2 mt-4">
+                    <button className="btn btn-primary" type="button">Generate New API Key</button>
+                </div>
+            </div>
+        </div>
     </main>
   );
 }
