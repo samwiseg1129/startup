@@ -3,7 +3,7 @@ import React from 'react';
 
 export function Api_Management() {
   return (
-    <main className='container-fluid bg-secondary text-center container my-5'>
+    <main className='container-fluid bg-light text-center container my-5'>
         <div className="row">
             <div className="col-lg-8 mx-auto">
                 <h1 className="text-center mb-4">API Management</h1>

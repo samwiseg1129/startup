@@ -66,7 +66,7 @@ function App() {
             <Route path='*' element={<NotFound />} />
         </Routes>
 
-        <footer className="bg-dark text-light py-4 mt-5">
+        <footer className="mt-auto bg-dark text-light py-4 mt-auto" >
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 text-center text-md-start">

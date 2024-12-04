@@ -1,4 +1,5 @@
 import React from 'react';
+import UserDataTable from './table';
 
 export function Query() {
   return (
@@ -10,7 +11,6 @@ export function Query() {
                     This is where the websocket tech will be used for a database query tool that can be configured to put new statistics on the dashboard
                 </p>
                 <div className="text-center">
-                    <img src="../pictures/sql_plchldr.webp" alt="link generator here" class="img-fluid rounded"></img>
                 </div>
                 <div className="mt-4">
                     <h2 className="h4">Query Tool</h2>
@@ -26,6 +26,7 @@ export function Query() {
     </main>
   );
 }
+
 {/*
     <!DOCTYPE html>
 <html lang="en">
