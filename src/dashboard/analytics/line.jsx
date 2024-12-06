@@ -33,7 +33,7 @@ const TimeRangeSelector = ({ value, onChange }) => (
 // allows me to select which metrics to display on dashboard
 const MetricSelector = ({ selected, onSelect }) => (
   <div>
-    {['pageviews', 'conversions', 'users'].map(metric => (
+    {[' Pageviews ', ' Conversions ', ' Users '].map(metric => (
       <label key={metric}>
         <input
           type="checkbox"

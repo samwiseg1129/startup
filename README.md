@@ -47,3 +47,18 @@ Key features include:
 - Building so many divs makes these apps so deep on nesting. Is there a better/ easier way to do it?
 - learned how to use the grid system for bootstrap (remember it uses 12 as its column default)
 - Going to need to make more adjustments to UI once 
+
+
+### JAVASCRIPT + REACT
+- React is actually used as a way to nest/modularize functionality
+- Router is the way to keep the same landing page but inject its contents
+- javascript is used to write the functional/interactive components of the website. 
+- used chart.js for some prebuilt components. modified line graph to be interactive. now need it to access actual user data on the backend. 
+
+
+
+### UPDATE DEC 6
+- React is a good way of modularizing a web app because you can inject different sections of code wherever you would like using component structuring
+- hooks have been really interested to use as they allow for dynamic updates to static features. 
+- state hook is to send changes and effect hook is to instigate them
+- stressed about finishing this class lol
