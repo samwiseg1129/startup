@@ -13,7 +13,7 @@ const Dashboard2 = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://your-analytics-server.com/data');
+      const response = await fetch('https://localhost:3000/data');
       const data = await response.json();
       setAnalyticsData(data);
     } catch (error) {

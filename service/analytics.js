@@ -38,7 +38,7 @@ const Analytics = {
         userAgent: navigator.userAgent
       };
   
-      fetch('https://your-analytics-server.com/collect', {
+      fetch('https://localhost:3000/collect', {
         method: 'POST',
         body: JSON.stringify(payload),
         headers: { 'Content-Type': 'application/json' }
