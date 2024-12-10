@@ -10,6 +10,7 @@ import { Landing } from './landing/landing';
 import { Login } from './login/login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav } from 'react-bootstrap';
+import Dashboard2 from './Dash2/dash2';
 
 function App() {
     return (
@@ -45,6 +46,9 @@ function App() {
                                 <NavLink className="nav-link" to="query">Query</NavLink>
                             </li>
                             <li className="nav-item">
+                                <NavLink className="nav-link" to="dashboard2">Dashboard 2</NavLink>
+                            </li>
+                            <li className="nav-item">
                                 <NavLink className="nav-link" to="my_profile">My Profile</NavLink>
                             </li>
                         </ul>
@@ -63,6 +67,7 @@ function App() {
             <Route path='/query' element={<Query />} />
             <Route path='/my_profile' element={<My_Profile />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/dashboard2' element={<Dashboard2 />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
 
