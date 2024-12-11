@@ -5,29 +5,15 @@ const Analytics = {
       sessionStart: Date.now(),
       lastPageStart: Date.now()
     },
-  
+    
     init: function() {
       document.addEventListener('click', this.trackClick.bind(this));
       window.addEventListener('beforeunload', this.submitData.bind(this));
       this.trackPageView();
       setInterval(this.submitData.bind(this), 60000); // Submit data every minute
     },
-  
-    trackClick: function(event) {
-      this.data.clicks.push({
-        x: event.clientX,
-        y: event.clientY,
-        timestamp: Date.now()
-      });
-    },
-  
-    trackPageView: function() {
-      this.data.pageViews.push({
-        url: window.location.href,
-        timestamp: Date.now()
-      });
-      this.data.lastPageStart = Date.now();
-    },
+    
+    // ... (other methods remain the same)
   
     submitData: function() {
       const currentTime = Date.now();
@@ -37,8 +23,8 @@ const Analytics = {
         totalTimeOnApp: currentTime - this.data.sessionStart,
         userAgent: navigator.userAgent
       };
-  
-      fetch('https://localhost:3000/collect', {
+      
+      fetch('http://localhost:3000/collect', {
         method: 'POST',
         body: JSON.stringify(payload),
         headers: { 'Content-Type': 'application/json' }
@@ -49,4 +35,7 @@ const Analytics = {
     }
   };
   
-  Analytics.init();
+  document.addEventListener('DOMContentLoaded', function() {
+    Analytics.init();
+  });
+  

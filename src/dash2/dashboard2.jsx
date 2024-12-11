@@ -1,10 +1,11 @@
 import React from 'react';
-import AnalyticsDashboard from './AnalyticsDashboard';
+import Dashboard2 from '/dash2';
 
 function App() {
   return (
     <div className="App">
-      <AnalyticsDashboard />
+      <Dashboard2 />
+      <Geolocator />
     </div>
   );
 }

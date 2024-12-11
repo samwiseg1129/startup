@@ -1,12 +1,12 @@
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
-app.use(express.static('public'));
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const axios = require('axios'); // Add this line to import axios
 
 const app = express();
+const port = process.argv.length > 2 ? process.argv[2] : 3000;
+
+app.use(express.static('public'));
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost/analytics', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -17,6 +17,8 @@ const AnalyticsSchema = new mongoose.Schema({
   timeOnPage: Number,
   totalTimeOnApp: Number,
   userAgent: String,
+  ipAddress: String,
+  geolocation: Object, 
   timestamp: { type: Date, default: Date.now }
 });
 
@@ -24,7 +26,15 @@ const Analytics = mongoose.model('Analytics', AnalyticsSchema);
 
 app.post('/collect', async (req, res) => {
   try {
-    const analyticsData = new Analytics(req.body);
+    const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const geoData = await getGeolocation(clientIp);
+    
+    const analyticsData = new Analytics({
+      ...req.body,
+      ipAddress: clientIp,
+      geolocation: geoData
+    });
+    
     await analyticsData.save();
     res.status(200).send('Data received');
   } catch (error) {
@@ -32,107 +42,23 @@ app.post('/collect', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Analytics server running on port 3000'));
+async function getGeolocation(ip) {
+  try {
+    const response = await axios.get(`http://api.ipstack.com/${ip}?access_key=YOUR_IPSTACK_API_KEY`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching geolocation data:', error);
+    return null;
+  }
+}
 
+app.get('/data', async (req, res) => {
+  try {
+    const data = await Analytics.find().sort('-timestamp').limit(100);
+    res.json(data);
+  } catch (error) {
+    res.status(500).send('Error fetching data');
+  }
+});
 
-
-
-
-
-// const express = require('express');
-// const uuid = require('uuid');
-// const app = express();
-
-// // The scores and users are saved in memory and disappear whenever the service is restarted.
-// let users = {};
-// let scores = [];
-
-// // The service port. In production the front-end code is statically hosted by the service on the same port.
-// const port = process.argv.length > 2 ? process.argv[2] : 3000;
-
-// // JSON body parsing using built-in middleware
-// app.use(express.json());
-
-// // Serve up the front-end static content hosting
-// app.use(express.static('public'));
-
-// // Router for service endpoints
-// var apiRouter = express.Router();
-// app.use(`/api`, apiRouter);
-
-// // CreateAuth a new user
-// apiRouter.post('/auth/create', async (req, res) => {
-//   const user = users[req.body.email];
-//   if (user) {
-//     res.status(409).send({ msg: 'Existing user' });
-//   } else {
-//     const user = { email: req.body.email, password: req.body.password, token: uuid.v4() };
-//     users[user.email] = user;
-
-//     res.send({ token: user.token });
-//   }
-// });
-
-// // GetAuth login an existing user
-// apiRouter.post('/auth/login', async (req, res) => {
-//   const user = users[req.body.email];
-//   if (user) {
-//     if (req.body.password === user.password) {
-//       user.token = uuid.v4();
-//       res.send({ token: user.token });
-//       return;
-//     }
-//   }
-//   res.status(401).send({ msg: 'Unauthorized' });
-// });
-
-// // DeleteAuth logout a user
-// apiRouter.delete('/auth/logout', (req, res) => {
-//   const user = Object.values(users).find((u) => u.token === req.body.token);
-//   if (user) {
-//     delete user.token;
-//   }
-//   res.status(204).end();
-// });
-
-// // GetScores
-// apiRouter.get('/scores', (_req, res) => {
-//   res.send(scores);
-// });
-
-// // SubmitScore
-// apiRouter.post('/score', (req, res) => {
-//   scores = updateScores(req.body, scores);
-//   res.send(scores);
-// });
-
-// // Return the application's default page if the path is unknown
-// app.use((_req, res) => {
-//   res.sendFile('index.html', { root: 'public' });
-// });
-
-// app.listen(port, () => {
-//   console.log(`Listening on port ${port}`);
-// });
-
-// // updateScores considers a new score for inclusion in the high scores.
-// function updateScores(newScore, scores) {
-//   let found = false;
-//   for (const [i, prevScore] of scores.entries()) {
-//     if (newScore.score > prevScore.score) {
-//       scores.splice(i, 0, newScore);
-//       found = true;
-//       break;
-//     }
-//   }
-
-//   if (!found) {
-//     scores.push(newScore);
-//   }
-
-//   if (scores.length > 10) {
-//     scores.length = 10;
-//   }
-
-//   return scores;
-// }
+app.listen(port, () => console.log(`Analytics server running on port ${port}`));

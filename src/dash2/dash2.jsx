@@ -13,7 +13,7 @@ const Dashboard2 = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://localhost:3000/data');
+      const response = await fetch('http://localhost:3000/data');
       const data = await response.json();
       setAnalyticsData(data);
     } catch (error) {
@@ -49,35 +49,23 @@ const Dashboard2 = () => {
     return <div>Loading...</div>;
   }
 
+  // Process analyticsData to create chart data
+  const pageViewsData = createChartData('Page Views', {
+    labels: analyticsData.map(item => new Date(item.timestamp).toLocaleString()),
+    values: analyticsData.map(item => item.pageViews.length)
+  });
+
+  const clicksData = createChartData('Clicks', {
+    labels: analyticsData.map(item => new Date(item.timestamp).toLocaleString()),
+    values: analyticsData.map(item => item.clicks.length)
+  });
+
   return (
     <div>
       <h1>Analytics Dashboard</h1>
       <div style={{ width: '80%', margin: 'auto' }}>
-        <Bar 
-          options={chartOptions} 
-          data={createChartData('Clicks per Page', {
-            labels: analyticsData.pageUrls,
-            values: analyticsData.clickCounts,
-          })} 
-        />
-      </div>
-      <div style={{ width: '80%', margin: 'auto' }}>
-        <Bar 
-          options={chartOptions} 
-          data={createChartData('Page Views', {
-            labels: analyticsData.pageUrls,
-            values: analyticsData.pageViewCounts,
-          })} 
-        />
-      </div>
-      <div style={{ width: '80%', margin: 'auto' }}>
-        <Bar 
-          options={chartOptions} 
-          data={createChartData('Average Time Spent (seconds)', {
-            labels: analyticsData.pageUrls,
-            values: analyticsData.avgTimeSpent,
-          })} 
-        />
+        <Bar options={chartOptions} data={pageViewsData} />
+        <Bar options={chartOptions} data={clicksData} />
       </div>
     </div>
   );
