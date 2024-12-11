@@ -1,5 +1,6 @@
 import React from 'react';
-import Dashboard2 from '/dash2';
+import { Dashboard2 } from '/dash2';
+import { Geolocator } from '/geolocator';
 
 function App() {
   return (

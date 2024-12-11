@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
-import usaJson from './usa-map.json'; // You'll need to download a USA map JSON file
+import usaJson from '/usa-map.json';
 
 const Geolocator = () => {
   const [ipAddress, setIpAddress] = useState('');
