@@ -35,21 +35,20 @@ export function Unauthenticated(props) {
 
   return (
     <div>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input id="username" type="email" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="your@email.com" required/>
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" required/>
-      </div>
-      <Button variant="primary" onClick={() => loginUser()} disabled={!userName || !password}>
-        Login
-      </Button>
-      <Button variant="secondary" onClick={() => createUser()} disabled={!userName || !password}>
-        Create
-      </Button>
-      <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
+        <div>
+            <label htmlFor="username">Username:</label>
+            <input id="username" className="form-control" type="email" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="your@email.com" required/>
+        </div>
+        <div>
+            <label htmlFor="password">Password:</label>
+            <input id="password" className="form-control" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" required/>
+        </div>
+        <div>
+        <Button variant="primary" onClick={() => loginUser()} disabled={!userName || !password}>Login</Button>
+        <Button variant="secondary" onClick={() => createUser()} disabled={!userName || !password}>Create</Button>
+        </div>
+        
+        <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </div>
   );
 }
