@@ -1,6 +1,19 @@
 import React from 'react';
 
-export function My_Profile() {
+export function My_Profile(props) {
+    function logout() {
+        fetch(`/api/auth/logout`, {
+          method: 'delete',
+        })
+          .catch(() => {
+            // Logout failed. Assuming offline
+          })
+          .finally(() => {
+            localStorage.removeItem('userName');
+            props.onLogout();
+          });
+    }
+    
   return (
     <main className='container-fluid bg-light text-center container my-5'>
         <div className="row">
@@ -10,20 +23,17 @@ export function My_Profile() {
                     <h2 className="h4">Account Details</h2>
                     <ul className="list-group">
                         <li className="list-group-item">
-                            <strong>Username:</strong> <span id="username">JohnDoe123</span>
+                            <strong>Username:</strong> <span id="username">{props.userName}</span>
                         </li>
                         <li className="list-group-item">
-                            <strong>Email:</strong> <span id="email">johndoe@example.com</span>
-                        </li>
-                        <li className="list-group-item">
-                            <strong>Account Type:</strong> <span id="accountType">Premium</span>
+                            <strong>Account Type:</strong> <span id="accountType">Free</span>
                         </li>
                     </ul>
                 </div>
                 <div className="d-grid gap-2 mt-4">
                     <button className="btn btn-primary" type="button">Edit Profile</button>
                     <button className="btn btn-outline-danger" type="button">Change Password</button>
-                    <button className="btn btn-outline-primary" type="button">Log Out</button>
+                    <button className="btn btn-outline-primary" type="button" onClick={() => logout()}>Log Out</button>
                 </div>
             </div>
         </div>
