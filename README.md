@@ -62,3 +62,16 @@ Key features include:
 - hooks have been really interested to use as they allow for dynamic updates to static features. 
 - state hook is to send changes and effect hook is to instigate them
 - stressed about finishing this class lol
+
+
+
+### Web service stuff
+- web services are hard. I am struggling but gonna update my readme with something (insert shrug emoji here)
+- for my implementation i will have to build something that plugs simon into my mongo db. 
+To do
+1. make sure Simon is sending user data to mongodb 
+2. Debug structure of web app
+3. Connect app to mongodb
+4. Make data from mongo show up on dashboard
+5. Questions: api router? Service help? Etc?
+6. Build web socket of sort 
