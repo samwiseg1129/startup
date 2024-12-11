@@ -23,6 +23,9 @@ export function Unauthenticated(props) {
         });
         if (response?.status === 200) {
         localStorage.setItem('userName', userName);
+        const body = await response.json();
+        console.log(body)
+        localStorage.setItem('ip', body.ipAddress)
         props.onLogin(userName);
         } else {
         const body = await response.json();
@@ -31,7 +34,7 @@ export function Unauthenticated(props) {
     }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <div>
         <label htmlFor="username">Username:</label>
         <input id="username" type="email" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="your@email.com" required/>
@@ -47,6 +50,6 @@ export function Unauthenticated(props) {
         Create
       </Button>
       <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
-    </form>
+    </div>
   );
 }

@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav } from 'react-bootstrap';
 import Dashboard2 from './Dash2/dash2';
 import { AuthState } from './login/authState';
+import { Unauthenticated } from './login/unauthenticated';
 
 function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -46,12 +47,12 @@ function App() {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="my_profile">My Profile</NavLink>
                             </li> */}
-                            {authState === AuthState.Unauthenticated && (
+                            {authState === AuthState.Unknown && (
                                 <li className='nav-item'>
                                     <NavLink className='nav-link' to='landing'>Home</NavLink>
                                 </li>
                             )}
-                            {authState === AuthState.Unauthenticated && (
+                            {authState === AuthState.Unknown && (
                                 <li className='nav-item'>
                                     <NavLink className='nav-link' to='login'>Login</NavLink>
                                 </li>
@@ -83,9 +84,8 @@ function App() {
             <Route path='/login' element={<Login userName={userName} authState={authState} onAuthChange={(userName, authState) => {setAuthState(authState); setUserName(userName);}}/>}/>
             {/* <Route path='/login' element={<Login />} /> */}
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/api_management' element={<Api_Management />} />
             <Route path='/dashboard2' element={<Dashboard2 />} />
-            <Route path='/my_profile' element={<My_Profile userName={userName}/>} />
+            <Route path='/my_profile' element={<My_Profile userName={userName} onLogout={() => {setAuthState(AuthState.Unauthenticated); setUserName('');}}/>} />
             {/* <Route path='/my_profile' element={<My_Profile />} /> */}
             <Route path='*' element={<NotFound />} />
         </Routes>

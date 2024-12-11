@@ -1,6 +1,11 @@
 import React from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { AuthState } from '../login/authState';
 
 export function My_Profile(props) {
+   
+    const navigate = useNavigate()
+    
     function logout() {
         fetch(`/api/auth/logout`, {
           method: 'delete',
@@ -11,8 +16,10 @@ export function My_Profile(props) {
           .finally(() => {
             localStorage.removeItem('userName');
             props.onLogout();
+            navigate('/')
           });
     }
+    const ip = localStorage.getItem('ip')
     
   return (
     <main className='container-fluid bg-light text-center container my-5'>
@@ -24,6 +31,9 @@ export function My_Profile(props) {
                     <ul className="list-group">
                         <li className="list-group-item">
                             <strong>Username:</strong> <span id="username">{props.userName}</span>
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Your Ip Address:</strong> <span id="accountType">{ip}</span>
                         </li>
                         <li className="list-group-item">
                             <strong>Account Type:</strong> <span id="accountType">Free</span>
