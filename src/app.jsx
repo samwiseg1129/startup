@@ -7,6 +7,7 @@ import { Login } from './login/login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav } from 'react-bootstrap';
 import Dashboard2 from './Dash2/dash2';
+import { AuthState } from './login/authState';
 
 function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -27,6 +28,24 @@ function App() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
+                            {/* <li className="nav-item">
+                                <NavLink className="nav-link" to="landing">Home</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="login">Login</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="dashboard">Dashboard</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="api_management">Api Management</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="dashboard2">Dashboard 2</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="my_profile">My Profile</NavLink>
+                            </li> */}
                             {authState === AuthState.Unauthenticated && (
                                 <li className='nav-item'>
                                     <NavLink className='nav-link' to='landing'>Home</NavLink>
@@ -62,9 +81,12 @@ function App() {
             <Route path='/' element={<Landing />} exact />
             <Route path='/landing' element={<Landing />} />
             <Route path='/login' element={<Login userName={userName} authState={authState} onAuthChange={(userName, authState) => {setAuthState(authState); setUserName(userName);}}/>}/>
+            {/* <Route path='/login' element={<Login />} /> */}
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/my_profile' element={<My_Profile userName={userName}/>} />
+            <Route path='/api_management' element={<Api_Management />} />
             <Route path='/dashboard2' element={<Dashboard2 />} />
+            <Route path='/my_profile' element={<My_Profile userName={userName}/>} />
+            {/* <Route path='/my_profile' element={<My_Profile />} /> */}
             <Route path='*' element={<NotFound />} />
         </Routes>
 

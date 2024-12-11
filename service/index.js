@@ -57,6 +57,20 @@ apiRouter.delete('/auth/logout', (req, res) => {
 
 
 
+/// need help after this
+
+
+
+//get data
+apiRouter.get('analytics'), (req, res) => {
+  res.send(analytics)
+}
+
+
+
+
+
+
 mongoose.connect('mongodb://localhost/analytics', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const AnalyticsSchema = new mongoose.Schema({

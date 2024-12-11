@@ -25,6 +25,7 @@ const Analytics = {
         setInterval(this.submitData.bind(this), this.config.submitInterval);
     },
 
+    //third party api call
     getIPAddress: function() {
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
