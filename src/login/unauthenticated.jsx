@@ -53,7 +53,6 @@ export function Unauthenticated(props) {
                             <Button variant="primary" onClick={() => loginUser()} disabled={!userName || !password}>Login</Button>
                             <Button variant="secondary" onClick={() => createUser()} disabled={!userName || !password}>Create</Button>
                             </div>
-                            
                             <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
                         </div>
                     </div>
