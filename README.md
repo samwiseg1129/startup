@@ -75,3 +75,11 @@ To do
 4. Make data from mongo show up on dashboard
 5. Questions: api router? Service help? Etc?
 6. Build web socket of sort 
+
+
+### WebService final update
+- finished my web service
+- It is locally hosted and resets when the app is refreshed
+- you can click through log in and log out
+- it parts that are restricted for post auth
+- it uses a 3rd part api to get the users ip address
