@@ -98,3 +98,5 @@ To do
 - this is gonna be crazy 
 ---------PPPPPPLLLLLLEEEEEEAAAAASSSSSSSEEEEEE GIVE ME PARTIAL POINTS --------------
 - I am going to try and implement a echo server. this websocket will take a message and send it back
+- This is Sam Signing off for the night... peace
+ I really tried so pls give me a few points for building some stuff? thanks
