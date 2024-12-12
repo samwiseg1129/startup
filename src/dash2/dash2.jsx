@@ -9,6 +9,7 @@ export default function Dash2() {
             <div className="row">
                 <div className="col-lg-8 mx-auto">
                     <h1 className="text-center mb-4">Click some buttons</h1>
+                    <p> help here</p>
                     {/* <button className="btn btn-outline-primary" type="button" onClick={buttonclick(1)}>Log Out</button>
                     <button className="btn btn-outline-primary" type="button" onClick={buttonclick(2)}>Log Out</button>
                     <button className="btn btn-outline-primary" type="button" onClick={buttonclick(3)}>Log Out</button>

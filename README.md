@@ -85,8 +85,6 @@ To do
 - it uses a 3rd part api to get the users ip address
 
 
-
-
 ### Startup Login 
 - seems like the functionality of startup service should almost fulfill this assignment but almost there.
 - needed to add calls to submit and check logins with mongo db
