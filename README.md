@@ -89,4 +89,8 @@ To do
 
 ### Startup Login 
 - seems like the functionality of startup service should almost fulfill this assignment but almost there.
-- 
+- needed to add calls to submit and check logins with mongo db
+- called with collin and aaron to get some help
+- require and import do similar things 
+- we are almost there
+- yeet
