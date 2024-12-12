@@ -110,6 +110,7 @@ apiRouter.get('/user', (req, res) => {
 
 
 /////////V
+
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
@@ -123,7 +124,7 @@ wss.on('connection', (ws) => {
     await saveMessage(message.toString());
 
     // Echo the message back to the client
-    ws.send(`Echo: ${message}`);
+    ws.send(`I heard you say: ${message}`);
   });
 
   ws.on('close', () => {

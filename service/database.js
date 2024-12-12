@@ -37,7 +37,14 @@ async function createUser(email, password) {
   return user;
 }
 
-module.exports = { getUser, getUserByToken, createUser };
+async function saveMessage(content) {
+  const newMessage = {content: content}
+  console.log(`this is the content: ${newMessage}`)
+  return await newMessage.insertOne();
+}
+
+
+module.exports = { getUser, getUserByToken, createUser, saveMessage, message };
 
 ////////////
 
