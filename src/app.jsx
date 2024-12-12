@@ -64,7 +64,7 @@ function App() {
                             )}
                             {authState === AuthState.Authenticated && (
                                 <li className='nav-item'>
-                                    <NavLink className='nav-link' to='dashboard2'>Dashboard 2</NavLink>
+                                    <NavLink className='nav-link' to='dash2'>Clicker</NavLink>
                                 </li>
                             )}
                             {authState === AuthState.Authenticated && (

@@ -1,15 +1,29 @@
+// import bcrypt from 'bcrypt'
+const bcrypt = require('bcrypt');
 const express = require('express');
 const uuid = require('uuid');
-const { getUser, getUserByToken, createUser } = require('./database');
+const { createUser, getUser } = require('./database');
 const app = express();
+
+
+// The scores and users are saved in memory and disappear whenever the service is restarted.
+let users = {};
+let scores = [];
+
+// The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
+// JSON body parsing using built-in middleware
 app.use(express.json());
+
+// Serve up the front-end static content hosting
 app.use(express.static('public'));
 
-const apiRouter = express.Router();
+// Router for service endpoints
+var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+// Function to get IP address using ipify API
 async function getIPAddress() {
   try {
     const response = await fetch('https://api.ipify.org?format=json');
@@ -19,43 +33,57 @@ async function getIPAddress() {
     console.error('Error fetching IP address:', error);
     return null;
   }
-}
+};
 
+// CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
-  const user = await getUser(req.body.email);
+  const user = users[req.body.email];
   if (user) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
     const ipAddress = await getIPAddress();
-    const newUser = await createUser(req.body.email, req.body.password);
-    res.send({ token: newUser.token, ipAddress });
-  }
-});
+    const user = {
+      email: req.body.email,
+      password: req.body.password,
+      token: uuid.v4(),
+      ipAddress: ipAddress
+    };
+    users[user.email] = user;
+    await createUser(user.email, user.password)
 
-apiRouter.post('/auth/login', async (req, res) => {
-  const user = await getUser(req.body.email);
-  if (user && req.body.password === user.password) {
-    user.token = uuid.v4();
-    user.ipAddress = await getIPAddress();
     res.send({ token: user.token, ipAddress: user.ipAddress });
-  } else {
-    res.status(401).send({ msg: 'Unauthorized' });
   }
 });
 
-apiRouter.delete('/auth/logout', async (req, res) => {
-  const user = await getUserByToken(req.body.token);
+// GetAuth login an existing user
+apiRouter.post('/auth/login', async (req, res) => {
+  const user = await getUser(req.body.email)
+  console.log(user)
   if (user) {
-    user.token = null;
-    user.ipAddress = null;
-    res.status(204).end();
-  } else {
-    res.status(404).send({ msg: 'User not found' });
+    const isCorrectPassword = await bcrypt.compare(req.body.password,user.password)
+    if (isCorrectPassword) {
+      user.token = uuid.v4();
+      user.ipAddress = await getIPAddress(); // Update IP address on login
+      res.send({ token: user.token, ipAddress: user.ipAddress });
+      return;
+    }
   }
+  res.status(401).send({ msg: 'Unauthorized' });
 });
 
-apiRouter.get('/user', async (req, res) => {
-  const user = await getUserByToken(req.query.token);
+// DeleteAuth logout a user
+apiRouter.delete('/auth/logout', (req, res) => {
+  const user = Object.values(users).find((u) => u.token === req.body.token);
+  if (user) {
+    delete user.token;
+    delete user.ipAddress;
+  }
+  res.status(204).end();
+});
+
+// Get user info (including IP address)
+apiRouter.get('/user', (req, res) => {
+  const user = Object.values(users).find((u) => u.token === req.query.token);
   if (user) {
     res.send({ email: user.email, ipAddress: user.ipAddress });
   } else {
@@ -63,122 +91,26 @@ apiRouter.get('/user', async (req, res) => {
   }
 });
 
-apiRouter.post('/submit-clicks', async (req, res) => {
-  try {
-    // Here you would typically save the click counts to the database
-    // For now, we'll just log them
-    console.log('Received click counts:', req.body.clickCounts);
-    res.status(200).send({ msg: 'Click counts received' });
-  } catch (error) {
-    res.status(500).send({ msg: 'Error saving click counts' });
-  }
-});
+// apiRouter.post('/submit-clicks', async (req, res) => {
+//   try {
+//     // Here you would typically save the click counts to the database
+//     // For now, we'll just log them
+//     console.log('Received click counts:', req.body.clickCounts);
+//     res.status(200).send({ msg: 'Click counts received' });
+//   } catch (error) {
+//     res.status(500).send({ msg: 'Error saving click counts' });
+//   }
+// });
+
 
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
+// Start the server
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Listening on port ${port}`);
 });
-
-
-
-// const express = require('express');
-// const uuid = require('uuid');
-// const app = express();
-
-// // The scores and users are saved in memory and disappear whenever the service is restarted.
-// let users = {};
-// let scores = [];
-
-// // The service port. In production the front-end code is statically hosted by the service on the same port.
-// const port = process.argv.length > 2 ? process.argv[2] : 3000;
-
-// // JSON body parsing using built-in middleware
-// app.use(express.json());
-
-// // Serve up the front-end static content hosting
-// app.use(express.static('public'));
-
-// // Router for service endpoints
-// var apiRouter = express.Router();
-// app.use(`/api`, apiRouter);
-
-// // Function to get IP address using ipify API
-// async function getIPAddress() {
-//   try {
-//     const response = await fetch('https://api.ipify.org?format=json');
-//     const data = await response.json();
-//     return data.ip;
-//   } catch (error) {
-//     console.error('Error fetching IP address:', error);
-//     return null;
-//   }
-// };
-
-// // CreateAuth a new user
-// apiRouter.post('/auth/create', async (req, res) => {
-//   const user = users[req.body.email];
-//   if (user) {
-//     res.status(409).send({ msg: 'Existing user' });
-//   } else {
-//     const ipAddress = await getIPAddress();
-//     const user = {
-//       email: req.body.email,
-//       password: req.body.password,
-//       token: uuid.v4(),
-//       ipAddress: ipAddress
-//     };
-//     users[user.email] = user;
-
-//     res.send({ token: user.token, ipAddress: user.ipAddress });
-//   }
-// });
-
-// // GetAuth login an existing user
-// apiRouter.post('/auth/login', async (req, res) => {
-//   const user = users[req.body.email];
-//   console.log(req)
-//   if (user) {
-//     if (req.body.password === user.password) {
-//       user.token = uuid.v4();
-//       user.ipAddress = await getIPAddress(); // Update IP address on login
-//       res.send({ token: user.token, ipAddress: user.ipAddress });
-//       return;
-//     }
-//   }
-//   res.status(401).send({ msg: 'Unauthorized' });
-// });
-
-// // DeleteAuth logout a user
-// apiRouter.delete('/auth/logout', (req, res) => {
-//   const user = Object.values(users).find((u) => u.token === req.body.token);
-//   if (user) {
-//     delete user.token;
-//     delete user.ipAddress;
-//   }
-//   res.status(204).end();
-// });
-
-// // Get user info (including IP address)
-// apiRouter.get('/user', (req, res) => {
-//   const user = Object.values(users).find((u) => u.token === req.query.token);
-//   if (user) {
-//     res.send({ email: user.email, ipAddress: user.ipAddress });
-//   } else {
-//     res.status(404).send({ msg: 'User not found' });
-//   }
-// });
-
-// app.use((_req, res) => {
-//   res.sendFile('index.html', { root: 'public' });
-// });
-
-// // Start the server
-// app.listen(port, () => {
-//   console.log(`Listening on port ${port}`);
-// });
 
 
 
