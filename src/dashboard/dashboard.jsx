@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BarChart } from "./analytics/bar"
 import { PieChart } from './analytics/pie';
 import { LineChart } from './analytics/line';
@@ -69,24 +69,22 @@ export function Dashboard() {
                         </div>
                     </div>
                 </div>
-            ////
-                <div>
-                    <h2>WebSocket Echo Test</h2>
-                    <input
-                    type="text"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Type a message"
-                    />
-                    <button onClick={sendMessage}>Send</button>
-                    <ul>
-                    {messages.map((msg, index) => (
-                        <li key={index}>{msg}</li>
-                    ))}
-                    </ul>
+
+                <div className="row">
+                    <div className = "card" >
+                        <div>
+                        <h2>WebSocket Echo Test</h2>
+                            <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Type a message"/>
+                            <button onClick={sendMessage}>Send</button>
+                            <ul>
+                                {messages.map((msg, index) => (<li key={index}>{msg}</li>))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            /////
-            <div className="card mx-3 my-3"> 
+                
+           
+            {/* <div className="card mx-3 my-3"> 
                 <h3 className="card-subtitle my-3">Key Metrics</h3>
                 <div className="row center">
                     <div className="col mb-3">
@@ -116,7 +114,7 @@ export function Dashboard() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     </main>
   );
