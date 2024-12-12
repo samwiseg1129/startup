@@ -5,6 +5,7 @@ import { LineChart } from './analytics/line';
 
 
 export function Dashboard() {
+    /////
     const [socket, setSocket] = useState(null);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
@@ -36,6 +37,7 @@ export function Dashboard() {
         setMessage('');
         }
     };
+    /////////
   return (
     <main className='container-fluid bg-light text-center'>
         <h1 className="card-title text-center mb-4 my-3">Your Dashboard</h1>        
@@ -67,7 +69,23 @@ export function Dashboard() {
                         </div>
                     </div>
                 </div>
-            
+            ////
+                <div>
+                    <h2>WebSocket Echo Test</h2>
+                    <input
+                    type="text"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Type a message"
+                    />
+                    <button onClick={sendMessage}>Send</button>
+                    <ul>
+                    {messages.map((msg, index) => (
+                        <li key={index}>{msg}</li>
+                    ))}
+                    </ul>
+                </div>
+            /////
             <div className="card mx-3 my-3"> 
                 <h3 className="card-subtitle my-3">Key Metrics</h3>
                 <div className="row center">
