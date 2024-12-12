@@ -38,13 +38,14 @@ async function createUser(email, password) {
 }
 
 async function saveMessage(content) {
-  const newMessage = {content: content}
-  console.log(`this is the content: ${newMessage}`)
-  return await newMessage.insertOne();
+  const messageCollection = db.collection('messages'); // Ensure you have a 'messages' collection
+  const newMessage = { content, timestamp: new Date() };
+  console.log(`Saving message: ${JSON.stringify(newMessage)}`);
+  await messageCollection.insertOne(newMessage);
 }
 
 
-module.exports = { getUser, getUserByToken, createUser, saveMessage, message };
+module.exports = { getUser, getUserByToken, createUser, saveMessage };
 
 ////////////
 

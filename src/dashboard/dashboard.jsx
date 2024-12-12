@@ -79,6 +79,7 @@ export function Dashboard() {
                             <ul>
                                 {messages.map((msg, index) => (<li key={index}>{msg}</li>))}
                             </ul>
+                            <p> this will echo back messages through the WebSocket</p>
                         </div>
                     </div>
                 </div>
