@@ -3,6 +3,11 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const uuid = require('uuid');
 const { createUser, getUser } = require('./database');
+//////V
+const http = require('http');
+const { WebSocketServer } = require('ws');
+const { saveMessage } = require('./database');
+//////^
 const app = express();
 
 
@@ -101,6 +106,31 @@ apiRouter.get('/user', (req, res) => {
 //     res.status(500).send({ msg: 'Error saving click counts' });
 //   }
 // });
+
+
+
+/////////V
+const server = http.createServer(app);
+const wss = new WebSocketServer({ server });
+
+wss.on('connection', (ws) => {
+  console.log('New WebSocket client connected');
+
+  ws.on('message', async (message) => {
+    console.log(`Received: ${message}`);
+    
+    // Save the message to MongoDB
+    await saveMessage(message.toString());
+
+    // Echo the message back to the client
+    ws.send(`Echo: ${message}`);
+  });
+
+  ws.on('close', () => {
+    console.log('WebSocket client disconnected');
+  });
+});
+////////^
 
 
 app.use((_req, res) => {
