@@ -41,8 +41,8 @@ export function My_Profile(props) {
                     </ul>
                 </div>
                 <div className="d-grid gap-2 mt-4">
-                    <button className="btn btn-primary" type="button">Edit Profile</button>
-                    <button className="btn btn-outline-danger" type="button">Change Password</button>
+                    {/* <button className="btn btn-primary" type="button">Edit Profile</button>
+                    <button className="btn btn-outline-danger" type="button">Change Password</button> */}
                     <button className="btn btn-outline-primary" type="button" onClick={() => logout()}>Log Out</button>
                 </div>
             </div>

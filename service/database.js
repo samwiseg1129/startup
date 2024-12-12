@@ -5,9 +5,9 @@ const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db('simon');
+const db = client.db('ProductTrack');
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('score');
+
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -38,26 +38,65 @@ async function createUser(email, password) {
   await userCollection.insertOne(user);
 
   return user;
-}
 
-async function addScore(score) {
-  return scoreCollection.insertOne(score);
-}
-
-function getHighScores() {
-  const query = { score: { $gt: 0, $lt: 900 } };
-  const options = {
-    sort: { score: -1 },
-    limit: 10,
-  };
-  const cursor = scoreCollection.find(query, options);
-  return cursor.toArray();
 }
 
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
-  addScore,
-  getHighScores,
 };
+
+
+
+////////////
+
+const AnalyticsSchema = new mongoose.Schema({
+  clicks: Array,
+  pageViews: Array,
+  timeOnPage: Number,
+  totalTimeOnApp: Number,
+  userAgent: String,
+  ipAddress: String,
+  geolocation: Object, 
+  timestamp: { type: Date, default: Date.now }
+});
+
+const Analytics = mongoose.model('Analytics', AnalyticsSchema);
+
+app.post('/collect', async (req, res) => {
+  try {
+    const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const geoData = await getGeolocation(clientIp);
+    
+    const analyticsData = new Analytics({
+      ...req.body,
+      ipAddress: clientIp,
+      geolocation: geoData
+    });
+    
+    await analyticsData.save();
+    res.status(200).send('Data received');
+  } catch (error) {
+    res.status(500).send('Error saving data');
+  }
+});
+
+async function getGeolocation(ip) {
+  try {
+    const response = await axios.get(`http://api.ipstack.com/${ip}?access_key=713aa0d2ecb3e23ef241959ffdf8b4bc`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching geolocation data:', error);
+    return null;
+  }
+}
+
+app.get('/data', async (req, res) => {
+  try {
+    const data = await Analytics.find().sort('-timestamp').limit(100);
+    res.json(data);
+  } catch (error) {
+    res.status(500).send('Error fetching data');
+  }
+});

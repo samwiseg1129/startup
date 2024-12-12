@@ -47,12 +47,12 @@ function App() {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="my_profile">My Profile</NavLink>
                             </li> */}
-                            {authState === AuthState.Unknown && (
+                            {authState === AuthState.Unauthenticated && (
                                 <li className='nav-item'>
                                     <NavLink className='nav-link' to='landing'>Home</NavLink>
                                 </li>
                             )}
-                            {authState === AuthState.Unknown && (
+                            {authState === AuthState.Unauthenticated && (
                                 <li className='nav-item'>
                                     <NavLink className='nav-link' to='login'>Login</NavLink>
                                 </li>
