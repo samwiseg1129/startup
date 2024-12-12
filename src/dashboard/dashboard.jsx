@@ -5,6 +5,37 @@ import { LineChart } from './analytics/line';
 
 
 export function Dashboard() {
+    const [socket, setSocket] = useState(null);
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([]);
+    useEffect(() => {
+        const ws = new WebSocket('ws://localhost:3000');
+        
+        ws.onopen = () => {
+        console.log('WebSocket connection established');
+        };
+    
+        ws.onmessage = (event) => {
+        setMessages((prevMessages) => [...prevMessages, event.data]);
+        };
+    
+        ws.onclose = () => {
+        console.log('WebSocket connection closed');
+        };
+    
+        setSocket(ws);
+    
+        return () => {
+        ws.close();
+        };
+    }, []);
+    
+    const sendMessage = () => {
+        if (socket && message) {
+        socket.send(message);
+        setMessage('');
+        }
+    };
   return (
     <main className='container-fluid bg-light text-center'>
         <h1 className="card-title text-center mb-4 my-3">Your Dashboard</h1>        

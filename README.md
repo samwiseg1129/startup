@@ -92,3 +92,9 @@ To do
 - require and import do similar things 
 - we are almost there
 - yeet
+
+
+### Startup WebSocket
+- this is gonna be crazy 
+---------PPPPPPLLLLLLEEEEEEAAAAASSSSSSSEEEEEE GIVE ME PARTIAL POINTS --------------
+- I am going to try and implement a echo server. this websocket will take a message and send it back
