@@ -97,3 +97,32 @@ Handling the toggling of the checkboxes was particularly interesting.
   ))}
 </div>
 ```
+
+## GitHub
+
+### What I Learned
+
+- **GitHub as a collaboration tool**: GitHub provides cloud-based Git repository hosting, making it easy to collaborate with others and maintain a backup of code.
+
+- **Creating repositories from templates**: Using the "Use this template" button allows you to quickly create a new repository based on an existing template, which is useful for standardized project setups.
+
+- **Cloning repositories**: Use `git clone <URL>` to create a local copy of a repository on your development machine.
+
+- **Basic Git workflow**: The standard workflow is:
+  1. Pull latest changes (`git pull`)
+  2. Make changes to code
+  3. Commit changes (`git commit -am "message"`)
+  4. Push to GitHub (`git push`)
+
+- **Markdown syntax**: GitHub uses Markdown for README and notes files. Key syntax includes:
+  - `#` for headings (more # = smaller heading)
+  - `**text**` for bold
+  - `-` or `*` for bullet lists
+  - `` `code` `` for inline code
+  - Triple backticks for code blocks
+
+- **Editing on GitHub web interface**: Files can be edited directly on GitHub's website by clicking the pencil icon, which is useful for quick changes.
+
+- **Importance of frequent commits**: Regular commits create a history of work, provide backup, demonstrate authorship, and allow for experimentation through branching.
+
+- **notes.md file**: This file serves as a personal knowledge base for the course. All content added here can be used on exams, making it essential to keep organized and up-to-date.
