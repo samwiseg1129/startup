@@ -1,132 +1,116 @@
-# Your startup name here
+# TripTactix
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-> [!NOTE]
-> This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
-
-> [!NOTE]
-> If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
+TripTactix helps you plan customized, budget-friendly trips with smart travel recommendations.
 
 ## 🚀 Specification Deliverable
 
-> [!NOTE]
-> Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
-
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
-
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Have you ever wanted to travel but felt overwhelmed by planning or worried about costs? TripTactix is your smart travel companion that turns destination dreams into affordable reality. Simply tell us where you want to go, your budget, and your travel style—whether that's adventure, relaxation, or cultural exploration—and our platform instantly generates personalized trip suggestions. Using real-time data from trusted travel APIs, we recommend the best flights, accommodations, and activities that fit your needs. Plus, stay connected with live price drop alerts through WebSocket notifications, ensuring you never miss a deal. TripTactix makes travel planning simple, affordable, and stress-free.
 
 ### Design
 
-![Design image](placeholder.png)
+The following is a simple mockup showing the main user flow:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+![Login Screen](placeholder.png)
 
 ```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
+    participant User
+    participant React Frontend
+    participant Backend Service
+    participant Travel API
+    participant Database
+    User->>React Frontend: Enter destination & budget
+    React Frontend->>Backend Service: Request trip suggestions
+    Backend Service->>Travel API: Query flights/hotels
+    Travel API-->>Backend Service: Return options
+    Backend Service->>Database: Save trip
+    Backend Service-->>React Frontend: Send recommendations
+    React Frontend-->>User: Display personalized itinerary
+    Backend Service->>React Frontend: WebSocket price updates
 ```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure user authentication (register/login)
+- Input destination, travel dates, and budget preferences
+- Real-time trip suggestions from third-party travel APIs
+- Save and manage multiple trip itineraries
+- Live price drop notifications via WebSocket
+- Responsive design for mobile and desktop
 
 ### Technologies
 
-I am going to use the required technologies in the following ways.
+I will use the required technologies in the following ways:
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML**: Provides the structure for the application with pages for login, dashboard, and trip planner. Uses semantic HTML elements for accessibility.
+- **CSS**: Styled with a clean, travel-themed design using soft blues and whites. Responsive layouts using Flexbox and Grid for mobile and desktop views.
+- **React**: Single-page application with components for login, trip dashboard, trip planner, and trip details. Uses React Router for navigation between views.
+- **Service**: Backend built with Node.js/Express providing endpoints for:
+  - User registration and authentication
+  - Fetching and saving trips
+  - Third-party API integration (e.g., Travel Advisor API for flights/hotels)
+- **Database**: Stores user accounts (hashed passwords), saved trip itineraries, and user preferences using MongoDB or PostgreSQL.
+- **WebSocket**: Provides real-time price updates for saved trips, notifying users when flight or hotel prices drop.
 
 ## 🚀 AWS deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [ ] Server deployed and accessible via custom domain
+- [ ] Link: [My server link](https://yourdomainnamehere.click/)
 
 ## 🚀 HTML deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [ ] HTML pages for login, dashboard, and trip planner
+- [ ] Links between pages
+- [ ] Text content for each section
+- [ ] Images/placeholders for trip suggestions
+- [ ] Login placeholder
+- [ ] Database placeholder (mock trip data)
+- [ ] WebSocket placeholder (price update section)
+- [ ] Third-party API placeholder (travel suggestions)
+- [ ] Application deployed to production environment
 
 ## 🚀 CSS deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
-- [ ] **Use of a CSS framework** - I did not complete this part of the deliverable.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
-- [ ] **Use of a imported font** - I did not complete this part of the deliverable.
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [ ] Header, footer, and main content styling
+- [ ] Navigation elements styled
+- [ ] Responsive design for different screen sizes
+- [ ] Application uses Bootstrap or custom CSS framework
+- [ ] Application is visually appealing with good color choices
+- [ ] Application text is readable with appropriate contrast
 
 ## 🚀 React part 1: Routing deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [ ] Application ported to React
+- [ ] Components for each major section
+- [ ] React Router implemented for page navigation
 
 ## 🚀 React part 2: Reactivity deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [ ] React hooks for state management
+- [ ] Components react to user interactions
 
 ## 🚀 Service deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [ ] Backend Node.js/Express service created
+- [ ] Frontend calls service endpoints
+- [ ] Service endpoints for registration and login
+- [ ] Service endpoints for saving and retrieving trips
+- [ ] Third-party API integration (Travel/Flight API)
+- [ ] Service deployed to production
 
 ## 🚀 DB deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [ ] MongoDB or PostgreSQL database created
+- [ ] Application stores and retrieves data from database
 
 ## 🚀 WebSocket deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [ ] WebSocket connection established
+- [ ] Real-time price updates sent from backend to frontend
+- [ ] WebSocket data displayed in application
+- [ ] Application works with multiple users connected simultaneously
+- [ ] WebSocket functionality deployed to production
